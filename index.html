@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        function getComputerChoice () {
+            let computerChoice = Math.floor(Math.random()*3)
+
+            if (computerChoice == 0) {
+                return "rock";
+            } else if (computerChoice == 1) {
+                return "paper";
+            } else {
+                return "scissors";
+            }
+        }
+
+        function getHumanChoice () {
+            return prompt("rock, paper, scissors?");
+        }
+
+        let computerScore = 0;
+
+        let humanScore = 0;
+
+        function playRound (humanChoice, computerChoice) {
+            humanChoice = humanChoice.toLowerCase();
+
+            if ((humanChoice == "rock" && computerChoice == "rock") || (humanChoice == "paper" && computerChoice == "paper") || (humanChoice == "scissors" && computerChoice == "scissors")) {
+                // return "It's a draw";
+                console.log("It's a draw")
+            } else if ((humanChoice == "rock" && computerChoice == "paper") || (humanChoice == "paper" && computerChoice == "scissors") || (humanChoice == "scissors" && computerChoice == "rock")) {
+                console.log("You lose!")
+                computerScore++;
+                return "You lose!";
+            } else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "scissors" && computerChoice == "paper")) {
+                console.log("You win!")
+                humanScore++;
+                return "You win!";
+            }
+        }
+
+        //playRound(getHumanChoice(), getComputerChoice());
+
+        //console.log("You:" + humanScore + " Computer:" + computerScore);
+
+        function playGame () {
+            playRound(getHumanChoice(), getComputerChoice());
+            playRound(getHumanChoice(), getComputerChoice());
+            playRound(getHumanChoice(), getComputerChoice());
+            playRound(getHumanChoice(), getComputerChoice());
+            playRound(getHumanChoice(), getComputerChoice());
+
+            console.log("Final score... You:" + humanScore + " Computer:" + computerScore);
+        }
+
+        playGame();
+
+    </script>
+
+
+</body>
+</html>
